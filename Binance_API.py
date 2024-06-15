@@ -6,6 +6,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 from collections import deque
 import plotly.graph_objs as go
+import os  # Import os to get the PORT from environment variables
 
 
 def fetch_bitcoin_price():
@@ -81,4 +82,5 @@ def update_graph_scatter(n):
 
 # Run the Dash app
 if __name__ == '__main__':
-    app.run_server(debug=False, use_reloader=False)
+    port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable or default to 5000
+    app.run_server(host='0.0.0.0', port=port, debug=False, use_reloader=False)
