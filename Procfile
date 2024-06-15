@@ -1,1 +1,1 @@
-web: python Binance_API.py
+web: gunicorn Binance_API:app
